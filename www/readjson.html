@@ -5,19 +5,15 @@
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
-        var url = "https://nabilfachrezi.000webhostapp.com/tugas7/www/json.php";
+        var url = "https://alyaramadhanni.000webhostapp.com/appcordova/www/json.php";
         $.getJSON(url, function(result) {
             console.log(result);
             $.each(result, function(i, field) {
-                var nip = field.nip;
+                var id_peserta = field.id_peserta;
+                var nim = field.nim;
                 var nama = field.nama;
-                var telp = field.telp;
-                var email = field.email;
-                var alamat = field.alamat;
-                
-                $("#listview").append("<a class='item' href='form.html?nip=" + nip + "&nama=" + nama + "&telp=" + telp + "&email=" + email + "&alamat=" + alamat +  "'><span class='item-note'><h2><b>" + alamat + "</h2></b></span><h2><b>" + nama + " </b></h2><p>" + telp + "</p><p>" + email + "</p></a>");
-    
-                
+                var sertifikasi = field.sertifikasi;
+                $("#listview").append("<a class='item' href='form.html?id_peserta=" + id_peserta + "&nim=" + nim + "&nama=" + nama + "&sertifikasi=" + sertifikasi + "'><span class='item-note'>$" + sertifikasi + "</span><h2>" + nim + " </h2><p>" + nama + "</p></a>");
             });
         });
     });
@@ -27,7 +23,7 @@
 <body>
     <div class="bar bar-header bar-positive" style="margin-bottom:80px;">
         <a href="index.html" class="button button-clear">Home</a>
-        <h1 class="title">Data Sertifikasi</h1>
+        <h1 class="title">Read Database (JSON)</h1>
     </div>
     <br/>
     <br/>
