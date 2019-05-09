@@ -1,7 +1,6 @@
-<?php
 include "db.php";
 $data=array();
-$q=mysqli_query($con,"select * from `progdi`");
+$q=mysqli_query($con,"select * from `peserta`");
 while ($row=mysqli_fetch_object($q)){
  $data[]=$row;
 }
