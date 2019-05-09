@@ -6,30 +6,23 @@
     <script type="text/javascript" src="js/geturi.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
-        var nip= decodeURI(getUrlVars()["nip"]);
+        var id_peserta = decodeURI(getUrlVars()["id_peserta"]);
+        var nim = decodeURI(getUrlVars()["nim"]);
         var nama = decodeURI(getUrlVars()["nama"]);
-        var telp = decodeURI(getUrlVars()["telp"]);
-        var email = decodeURI(getUrlVars()["email"]);
-        var alamat = decodeURI(getUrlVars()["alamat"]);
-        
-        $("#nip").val(nip);
+        var sertifikasi = decodeURI(getUrlVars()["sertifikasi"]);
+        $("#id_peserta").val(id_peserta);
+        $("#nim").val(nim);
         $("#nama").val(nama);
-        $("#telp").val(telp);
-        $("#email").val(email);
-        $("#alamat").val(alamat);
-        
+        $("#sertifikasi").val(sertifikasi);
         $("#update").click(function() {
-            var nip = $("#nip").val();
-            var nama = $("#nama").val();
-            var telp = $("#telp").val();
-            var email = $("#email").val();
-
-            var alamat = $("#alamat").val();
-            
-            var dataString = "nip=" + nip + "&nama=" + nama + "&telp=" + telp +"&email=" + email + "&alamat=" + alamat +  "&update=";
+            var id = $("#id_peserta").val();
+            var title = $("#nim").val();
+            var duration = $("#nama").val();
+            var price = $("#sertifikasi").val();
+            var dataString = "id_peserta=" + id_peserta + "&nim=" + nim + "&nama=" + nama + "&sertifikasi=" + sertifikasi + "&update=";
             $.ajax({
                 type: "POST",
-                url: "https://nabilfachrezi.000webhostapp.com/tugas7/www/update.php",
+                url: "https://alyaramadhanni.000webhostapp.com/appcordova/www/update.php",
                 data: dataString,
                 crossDomain: true,
                 cache: false,
@@ -48,11 +41,11 @@
 
         });
         $("#delete").click(function() {
-            var nip = $("#nip").val();
-            var dataString = "nip=" + nip + "&delete=";
+            var id_peserta = $("#id_peserta").val();
+            var dataString = "id_peserta=" + id + "&delete=";
             $.ajax({
                 type: "GET",
-                url: "https://nabilfachrezi.000webhostapp.com/tugas7/www/delete.php",
+                url: "https://alyaramadhanni.000webhostapp.com/delete.php",
                 data: dataString,
                 crossDomain: true,
                 cache: false,
@@ -78,48 +71,24 @@
     <div class="bar bar-header bar-positive" style="margin-bottom:80px;">
         <a href="index.html" class="button button-clear">Home</a>
         <h1 class="title">Update Database</h1>
-        <a class="button button-clear" href="readjson.html">Data Sertifikasi</a>
+        <a class="button button-clear" href="readjson.html">Read JSON</a>
     </div>
     <br/>
     <br/>
     <div class="list">
-       
+        <input type="hidden" id="id_peserta" value="" />
         <div class="item">
             <label>NIM</label>
-            <input type="text" id="nip" value="" />
+            <input type="text" id="nim" value="" />
         </div>
         <div class="item">
             <label>Nama</label>
             <input type="text" id="nama" value="" />
         </div>
-
         <div class="item">
-        <label>Pilih Program Studi:
-        <select id="telp">
-          <option value="Teknik Informatika">Teknik Informatika</option>
-          <option value="Sistem Informasi">Sistem Informasi</option>
-          <option value="Manajemen Informatika">Manajemen Informatika</option>
-        </select>
-      </label>
-      </div>
-        
-        <div class="item">
-            <label>Email</label>
-            <input type="text" id="email" value="" />
+            <label>Sertifikasi</label>
+            <input type="text" id="price" value="" />
         </div>
-        
-        <div class="item">
-        <label>Pilih Sertifikasi:
-        <select id="alamat">
-          <option value="CISCO">Cisco</option>
-          <option value="FORESEC">Foresec</option>
-          <option value="ORACLE">Oracle</option>
-          <option value="MTA">MTA</option>
-          <option value="TOEFL">Toefl</option>
-        </select>
-      </label>
-      </div>
-       
         <div class="item">
             <input type="button" id="update" class="button button-block" value="Update" />
             <input type="button" id="delete" class="button button-block" value="Delete" />
