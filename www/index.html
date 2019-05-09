@@ -6,17 +6,15 @@
     <script type="text/javascript">
     $(document).ready(function() {
         $("#insert").click(function() {
-            var nip= $("#nip").val();
+            var nim = $("#nim")val();
             var nama = $("#nama").val();
-            var email = $("#email").val();
-            var telp = $("#telp").val();
-            var alamat = $("#alamat").val();
+            var sertifikasi = $("#sertifikasi").val();
             
-            var dataString = "nip=" + nip + "&nama=" + nama +"&telp=" + telp +  "&email=" + email + "&alamat=" + alamat +  "&insert=";
-            if ($.trim(nip).length > 0 & $.trim(nama).length > 0  & $.trim(telp).length > 0 & $.trim(email).length > 0  & $.trim(alamat).length > 0 ) {
+            var dataString = "nim=" + nim + "&nama=" + nama +"&sertifikasi=" + sertifikasi + "&insert=";
+            if ($.trim(nim).length > 0 & $.trim(nama).length > 0 & $.trim(sertifikasi).length > 0) {
                 $.ajax({
                     type: "POST",
-                    url: "https://nabilfachrezi.000webhostapp.com/tugas7/www/insert.php",
+                    url: "https://alyaramadhanni.000webhostapp.com/appcordova/www/insert.php",
                     data: dataString,
                     crossDomain: true,
                     cache: false,
@@ -50,32 +48,17 @@
         
         <div class="item">
             <label>NIM</label>
-            <input type="text" id="nip" value="" />
+            <input type="text" id="nim" value="" />
         </div>
         <div class="item">
             <label>Nama</label>
             <input type="text" id="nama" value="" />
         </div>
-
-        <div class="item">
-        <label>Pilih Program Studi:
-        <select id="telp">
-          <option value="Teknik Informatika">Teknik Informatika</option>
-          <option value="Sistem Informasi">Sistem Informasi</option>
-          <option value="Manajemen Informatika">Manajemen Informatika</option>
-        </select>
-      </label>
-      </div>
-      
-        <div class="item">
-            <label>Email</label>
-            <input type="text" id="email" value="" />
-        </div>
     
         
         <div class="item">
         <label>Pilih Sertifikasi:
-        <select id="alamat">
+        <select id="sertifikasi">
           <option value="CISCO">Cisco</option>
           <option value="FORESEC">Foresec</option>
           <option value="ORACLE">Oracle</option>
