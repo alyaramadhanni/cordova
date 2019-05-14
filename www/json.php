@@ -1,8 +1,10 @@
+<?php
 include "db.php";
 $data=array();
-$q=mysqli_query($con,"select * from `peserta`");
+$q=mysqli_query($con,"select * from `dt_mhs`");
 while ($row=mysqli_fetch_object($q)){
  $data[]=$row;
 }
 echo json_encode($data);
 ?>
+
