@@ -6,23 +6,31 @@
     <script type="text/javascript" src="js/geturi.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
-        var id_peserta = decodeURI(getUrlVars()["id_peserta"]);
-        var nim = decodeURI(getUrlVars()["nim"]);
+        var nim= decodeURI(getUrlVars()["nim"]);
         var nama = decodeURI(getUrlVars()["nama"]);
-        var sertifikasi = decodeURI(getUrlVars()["sertifikasi"]);
-        $("#id_peserta").val(id_peserta);
+        var progdi = decodeURI(getUrlVars()["progdi"]);
+        var sertif = decodeURI(getUrlVars()["sertif"]);
+        var email = decodeURI(getUrlVars()["email"]);
+		var nohp = decodeURI(getUrlVars()["nohp"]);
+        
         $("#nim").val(nim);
         $("#nama").val(nama);
-        $("#sertifikasi").val(sertifikasi);
+        $("#progdi").val(progdi);
+        $("#sertif").val(sertif);
+        $("#email").val(email);
+        $("#nohp").val(nohp);
         $("#update").click(function() {
-            var id = $("#id_peserta").val();
-            var title = $("#nim").val();
-            var duration = $("#nama").val();
-            var price = $("#sertifikasi").val();
-            var dataString = "id_peserta=" + id_peserta + "&nim=" + nim + "&nama=" + nama + "&sertifikasi=" + sertifikasi + "&update=";
+            var nim = $("#nim").val();
+            var nama = $("#nama").val();
+            var progdi = $("#progdi").val();
+            var sertif = $("#sertif").val();
+			var email = $("#email").val();
+            var nohp = $("#nohp").val();
+            
+            var dataString = "nim=" + nim + "&nama=" + nama + "&progdi=" + progdi +"&sertif=" + sertif + "&email=" + email + "&nohp=" + nohp + "&update=";
             $.ajax({
                 type: "POST",
-                url: "https://alyaramadhanni.000webhostapp.com/appcordova/www/update.php",
+                url: "https://nabillaalya.000webhostapp.com/appcordova/www/update.php",
                 data: dataString,
                 crossDomain: true,
                 cache: false,
@@ -41,11 +49,11 @@
 
         });
         $("#delete").click(function() {
-            var id_peserta = $("#id_peserta").val();
-            var dataString = "id_peserta=" + id + "&delete=";
+            var nim = $("#nim").val();
+            var dataString = "nim=" + nim + "&delete=";
             $.ajax({
                 type: "GET",
-                url: "https://alyaramadhanni.000webhostapp.com/delete.php",
+                url: "https://nabillaalya.000webhostapp.com/appcordova/www/delete.php",
                 data: dataString,
                 crossDomain: true,
                 cache: false,
@@ -71,12 +79,12 @@
     <div class="bar bar-header bar-positive" style="margin-bottom:80px;">
         <a href="index.html" class="button button-clear">Home</a>
         <h1 class="title">Update Database</h1>
-        <a class="button button-clear" href="readjson.html">Read JSON</a>
+        <a class="button button-clear" href="readjson.html">Data Sertifikasi</a>
     </div>
     <br/>
     <br/>
     <div class="list">
-        <input type="hidden" id="id_peserta" value="" />
+       
         <div class="item">
             <label>NIM</label>
             <input type="text" id="nim" value="" />
@@ -85,13 +93,42 @@
             <label>Nama</label>
             <input type="text" id="nama" value="" />
         </div>
+
         <div class="item">
-            <label>Sertifikasi</label>
-            <input type="text" id="price" value="" />
+        <label>Pilih Program Studi:
+        <select id="progdi">
+          <option value="Teknik Informatika">Teknik Informatika</option>
+          <option value="Sistem Informasi">Sistem Informasi</option>
+          <option value="Manajemen Informatika">Manajemen Informatika</option>
+        </select>
+      </label>
+      </div>
+        
+		<div class="item">
+        <label>Pilih Sertifikasi:
+        <select id="sertif">
+          <option value="CISCO">Cisco</option>
+          <option value="FORESEC">Foresec</option>
+          <option value="ORACLE">Oracle</option>
+          <option value="MTA">MTA</option>
+          <option value="TOEFL">Toefl</option>
+        </select>
+      </label>
+      </div>
+	  
+        <div class="item">
+            <label>Email</label>
+            <input type="text" id="email" value="" />
         </div>
+        
         <div class="item">
-            <input type="button" id="update" class="button button-block" value="Update" />
-            <input type="button" id="delete" class="button button-block" value="Delete" />
+            <label>No HP</label>
+            <input type="text" id="nohp" value="" />
+        </div>
+       
+        <div class="item">
+            <input type="button" id="update" class="button button-block" value="Update" onclick="window.location.href='http://nabillaalya.000webhostapp.com/appcordova/www/readjson.html'" />
+            <input type="button" id="delete" class="button button-block" value="Delete" onclick="window.location.href='http://nabillaalya.000webhostapp.com/appcordova/www/readjson.html'"/>
         </div>
     </div>
 </body>
